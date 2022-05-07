@@ -1216,7 +1216,7 @@ class Header {
     buffer
       ..write(name)
       ..write(': ');
-    if (length < MailConventions.textLineMaxLength) {
+    if (length < MailConventions.messageLineMaxLength) {
       if (value != null) {
         buffer.write(value);
       }
@@ -1227,7 +1227,7 @@ class Header {
       final runes = value!.runes.toList();
       var startIndex = 0;
       while (length > 0) {
-        var chunkLength = MailConventions.textLineMaxLength - currentLineLength;
+        var chunkLength = MailConventions.messageLineMaxLength - currentLineLength;
         if (startIndex + chunkLength >= value.length) {
           // write reminder:
           buffer
